@@ -6,13 +6,13 @@ import VolunteerDashboard from './components/VolunteerDashboard';
 import StudentDashboard from './components/StudentDashboard';
 
 import './App.css';
+import FormContainer from "./signUpFormComponents/FormContainer"
 
 function App() {
   return (
       <div className="App">
 
       </div>
-
 
   );
 }
