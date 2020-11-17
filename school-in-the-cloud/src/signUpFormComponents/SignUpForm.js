@@ -4,6 +4,7 @@ export default function SignUpForm(props) {
     const { formValues, change, submit, buttonDisabled, errors } = props;
     return (
         <div>
+            <h3>Create Account</h3>
             <div>
                 <p className="errors">{errors.username}</p>
                 <p className="errors">{errors.password}</p>
@@ -25,7 +26,7 @@ export default function SignUpForm(props) {
                 </label>
                 <label>
                     Role:
-                    <select name="role" onChange={change}>
+                    <select name="role" value={formValues.role} onChange={change}>
                         <option value="">--Choose Role--</option>
                         <option value="admin">Admin</option>
                         <option value="volunteer">Volunteer</option>

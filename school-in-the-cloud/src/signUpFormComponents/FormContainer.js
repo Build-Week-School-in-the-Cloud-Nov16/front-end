@@ -2,19 +2,20 @@ import React, { useState, useEffect } from "react";
 import SignUpForm from "./SignUpForm";
 import formSchema from "./formSchema";
 import * as yup from "yup";
+import axios from "axios";
 
 const defaultValues ={
     username: "",
     password: "",
     email: "",
-    role: ""
+    role: "",
 }
 
 const defaultErrors = {
     username: "",
     password: "",
     email: "",
-    role: ""
+    role: "",
 }
 
 function FormContainer(props) {
@@ -23,6 +24,7 @@ function FormContainer(props) {
    const [ savedFormInfo, setSavedFormInfo ] = useState([]);
    const [ errors, setErrors ] = useState(defaultErrors);
    const [ buttonDisabled, setButtonDisabled ] = useState(true);
+   const [ post, setPost ] = useState([]);
 
    const change = (evt) => {
        const { name, value } = evt.target;
@@ -32,6 +34,16 @@ function FormContainer(props) {
 
    const submit = (evt) => {
        evt.preventDefault();
+
+       axios.post("https://jsonplaceholder.typicode.com/posts", formValues)
+            .then((res) => {
+                setPost(res.data);
+                console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+                debugger;
+            })
 
        const newData = {
         username: formValues.username.trim(),
