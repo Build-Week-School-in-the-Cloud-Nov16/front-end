@@ -11,18 +11,18 @@ export default function SignUpForm(props) {
                 <p className="errors">{errors.email}</p>
                 <p className="errors">{errors.role}</p>
             </div>
-            <form onSubmit={submit}>
+            <form onSubmit={submit} className="form">
                 <label>
                     Username:
-                    <input type="text" name="username" value={formValues.username} onChange={change}/>
+                    <input type="text" name="username" value={formValues.username} onChange={change} placeholder="Username Here"/>
                 </label>
                 <label>
                     Password:
-                    <input type="password" name="password" value={formValues.password} onChange={change}/>
+                    <input type="password" name="password" value={formValues.password} onChange={change} placeholder="Password Here"/>
                 </label>
                 <label>
                     Email:
-                    <input type="email" name="email" value={formValues.email} onChange={change}/>
+                    <input type="email" name="email" value={formValues.email} onChange={change} placeholder="Email Here"/>
                 </label>
                 <label>
                     Role:
