@@ -35,7 +35,7 @@ function FormContainer(props) {
    const submit = (evt) => {
        evt.preventDefault();
 
-       axios.post("https://jsonplaceholder.typicode.com/posts", formValues)
+       axios.post("https://bwschoolinthecloud.herokuapp.com/api/auth/register", formValues)
             .then((res) => {
                 setPost(res.data);
                 console.log(res.data);
