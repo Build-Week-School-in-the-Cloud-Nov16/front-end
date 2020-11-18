@@ -23,7 +23,10 @@ const VolunteerDashboard = () => {
         <div>
             <h1>Volunteer Dashboard</h1>
             {currentTasks.map(task => (
-                <p>{task.task}</p>
+                <div>
+                    <p>{task.title}</p>
+                    <p>{task.description}</p> 
+                </div>
                 // Will need to change this to correct API
             ))}
         </div>
