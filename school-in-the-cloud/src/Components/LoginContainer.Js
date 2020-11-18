@@ -1,8 +1,7 @@
-import './App.css';
-import React, { useState } from 'react' ;
-import LoginForm from './Components/LoginForm';
+import React, { useState } from 'react';
+import LoginForm from './LoginForm';
 
-function LoginContainer {
+export default function LoginContainer(props) {
 
 
   const adminUser = {

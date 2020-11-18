@@ -10,6 +10,7 @@ import './App.css';
 import FormContainer from "./signUpFormComponents/FormContainer"
 import DummyComponent from "./DummyComponent/DummyComponent";
 import Nav from "./components/Nav";
+import LoginContainer from "./components/LoginContainer";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
 
         <Route exact path="/"> 
           <Nav />
-          <DummyComponent /> 
+          <LoginContainer /> 
         </Route>
         <Route path="/sign-up">  
           <Nav />
