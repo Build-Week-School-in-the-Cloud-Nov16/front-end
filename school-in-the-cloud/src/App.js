@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AdminDashboard from './components/AdminDashboard';
 import VolunteerDashboard from './components/VolunteerDashboard';
 import StudentDashboard from './components/StudentDashboard';
+import PrivateRoute from './components/PrivateRoute';
+import EditTask from './components/EditTask';
 
 import './App.css';
 import FormContainer from "./signUpFormComponents/FormContainer"
@@ -12,7 +14,7 @@ import DummyComponent from "./DummyComponent/DummyComponent";
 import Nav from "./components/Nav";
 import LoginContainer from "./components/LoginContainer";
 
-function App() {
+function App(props) {
   return (
     <Router>
       <div className="App">
@@ -28,9 +30,13 @@ function App() {
           <Nav />
           <FormContainer/>
         </Route>
-        <Route path="/admin" component={AdminDashboard}></Route>
-        <Route path="/volunteer" component={VolunteerDashboard}></Route>
-        <Route path="/student" component={StudentDashboard}></Route>
+        <PrivateRoute path="/admin" component={AdminDashboard}></PrivateRoute>
+        <PrivateRoute path="/volunteer" component={VolunteerDashboard}></PrivateRoute>
+        <PrivateRoute path="/student" component={StudentDashboard}></PrivateRoute>
+
+        <Route exact path='/edit-task/:id' render={() => (
+          <EditTask />
+        )} />
       </div>
     </Router>
       

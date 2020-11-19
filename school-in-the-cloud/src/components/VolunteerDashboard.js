@@ -4,11 +4,11 @@ import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const VolunteerDashboard = () => {
-    const [currentTasks, setCurrentTasks] = useState([])
+    const [currentTasks, setCurrentTasks] = useState([]);
 
     useEffect(()=> {
         axiosWithAuth() 
-            .get('/api/tasks')
+            .get('/tasks')
             .then(res => {
                 console.log("TASKS DATA", res)
                 setCurrentTasks(res.data)
@@ -22,8 +22,12 @@ const VolunteerDashboard = () => {
     return (
         <div>
             <h1>Volunteer Dashboard</h1>
+            <h3>Tasks</h3>
             {currentTasks.map(task => (
-                <p>{task.task}</p>
+                <div>
+                    <p>Title: {task.title}</p>
+                    <p>Description: {task.description}</p> 
+                </div>
                 // Will need to change this to correct API
             ))}
         </div>
