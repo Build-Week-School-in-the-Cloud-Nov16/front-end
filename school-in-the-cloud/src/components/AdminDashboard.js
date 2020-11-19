@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { Form, FormGroup, Input, Button, Label, Card, CardBody, CardTitle, CardText } from "reactstrap";
 
 const initialFormValues = {
     title: "",
@@ -61,42 +62,56 @@ const AdminDashboard = () => {
     return (
         <div>
             <h1>Admin Dashboard</h1>
-            <h3>Add a Task</h3>
-            <form onSubmit={addTask}>
-                <label>Title:
-                    <input 
-                        type='input'
-                        name='title'
-                        value={formValues.title}
-                        onChange={handleChange}
-                    />
-                </label>
-                <br></br>
-                <label>Description:
-                    <input 
-                        type='input'
-                        name='description'
-                        value={formValues.description}
-                        onChange={handleChange}
-                    />
-                </label>
-                <br></br>
-                <button>Add a Task</button>
-            </form>
+            
+            <div className="formContainer">
+                <Form onSubmit={addTask} className="form">
+                <h3>Add a Task</h3>
+                    <FormGroup>
+                        <Label for="title">Title</Label>
+                        <Input 
+                            type='input'
+                            name='title'
+                            value={formValues.title}
+                            onChange={handleChange}
+                            id="title"
+                        />
+                    </FormGroup>
+            
+                    <FormGroup>
+                        <Label for="description">Description</Label>
+                        <Input 
+                            type='input'
+                            name='description'
+                            value={formValues.description}
+                            onChange={handleChange}
+                            id="description"
+                        />
+                    </FormGroup>
+                
+                    <Button color="primary">Add a Task</Button>
+                </Form>
+            </div>
+            
 
             <h4>Tasks</h4>
             {tasks.map(task => (
-                <div>
-                    <p>Title: {task.title}</p>
-                    <p>Description: {task.description}</p>
-                    <button onClick={() => history.push(`/edit-task/${task.id}`)}>Edit Task</button>
+                <div className="cardDiv">
+                    <Card className="cardStyling">
+                        <CardBody className="cardBody">
+                            <CardTitle>Title: {task.title}</CardTitle>
+                            <CardText>Description: {task.description}</CardText>
+                            <Button color="secondary" onClick={() => history.push(`/edit-task/${task.id}`)}>Edit Task</Button>
+                            
+                            <Button color="tertiary" onClick={e => {
+                                e.stopPropagation();
+                                deleteTask(task)
+                            }}>
+                                Delete Task
+                            </Button>
+                        </CardBody>
+                        
+                    </Card>
                     
-                    <button onClick={e => {
-                        e.stopPropagation();
-                        deleteTask(task)
-                    }}>
-                        Delete Task
-                    </button>
                 </div>
             ))}
         </div>

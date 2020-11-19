@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, Input, Button } from "reactstrap";
 
 const SearchBox = () => {
     const [value, setValue] = useState('');
@@ -12,17 +13,16 @@ const SearchBox = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input 
+        <Form onSubmit={handleSubmit} row className="search">
+            <Input 
                type='text'
                name='search'
                value={value}
                placeholder='Search'
                onChange={handleChange} 
             />
-
-            <button>Search</button>
-        </form>
+            <Button color="primary">Search</Button>
+        </Form>
     )
 }
 

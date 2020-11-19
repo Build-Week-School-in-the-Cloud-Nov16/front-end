@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Card, CardBody, CardTitle } from "reactstrap";
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
@@ -18,12 +19,15 @@ const VolunteerCard = () => {
     }, [])
 
     return(
-        <div>
+        <div className="volunteerHolder">
             <h3>Volunteers</h3>
             {volunteerData.map(volunteer => (
-                <div>
-                    <h5>Volunteer's Username: {volunteer.username}</h5>
+                <div className="cardHolder">
+                    <Card className="volunteerCard">
+                        <CardTitle>Volunteer's Username: {volunteer.username}</CardTitle>
+                    </Card>
                 </div>
+                
             ))}
         </div>
     )
