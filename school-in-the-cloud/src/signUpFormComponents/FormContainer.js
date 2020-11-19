@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import SignUpForm from "./SignUpForm";
 import formSchema from "./formSchema";
 import * as yup from "yup";
@@ -26,6 +27,8 @@ function FormContainer(props) {
    const [ buttonDisabled, setButtonDisabled ] = useState(true);
    const [ post, setPost ] = useState([]);
 
+   const history = useHistory();
+
    const change = (evt) => {
        const { name, value } = evt.target;
        validate(name, value);
@@ -39,6 +42,15 @@ function FormContainer(props) {
             .then((res) => {
                 setPost(res.data);
                 console.log(res.data);
+                history.push('/');
+
+                // if (res.data.role === 'admin'){
+                //     history.push('/admin')
+                // } else if (res.data.role === 'volunteer') {
+                //     history.push('/volunteer')
+                // } else {
+                //     history.push('/student')
+                // }
             })
             .catch((err) => {
                 console.log(err);

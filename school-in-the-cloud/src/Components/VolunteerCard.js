@@ -7,10 +7,10 @@ const VolunteerCard = () => {
 
     useEffect(() => {
         axiosWithAuth()
-            .get('/users/filter?role=volunteers')
+            .get('/users/filter?role=volunteer')
             .then(res => {
                 console.log("VOLUNTEERS", res)
-                setVolunteerData(res.data)
+                setVolunteerData(res.data.data)
             })
             .catch(err => {
                 console.log(err)
@@ -22,7 +22,7 @@ const VolunteerCard = () => {
             <h3>Volunteers</h3>
             {volunteerData.map(volunteer => (
                 <div>
-                    <p>{volunteer.username}</p>
+                    <h5>Volunteer's Username: {volunteer.username}</h5>
                 </div>
             ))}
         </div>

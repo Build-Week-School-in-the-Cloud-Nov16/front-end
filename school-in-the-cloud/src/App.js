@@ -6,6 +6,7 @@ import AdminDashboard from './components/AdminDashboard';
 import VolunteerDashboard from './components/VolunteerDashboard';
 import StudentDashboard from './components/StudentDashboard';
 import PrivateRoute from './components/PrivateRoute';
+import EditTask from './components/EditTask';
 
 import './App.css';
 import FormContainer from "./signUpFormComponents/FormContainer"
@@ -32,6 +33,10 @@ function App() {
         <PrivateRoute path="/admin" component={AdminDashboard}></PrivateRoute>
         <PrivateRoute path="/volunteer" component={VolunteerDashboard}></PrivateRoute>
         <PrivateRoute path="/student" component={StudentDashboard}></PrivateRoute>
+
+        <Route exact path='/edit-task/:id' render={() => (
+          <EditTask />
+        )} />
       </div>
     </Router>
       
