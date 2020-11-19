@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
@@ -47,16 +47,16 @@ const AdminDashboard = () => {
             })
     }
 
-    // const deleteTask = (task) => {
-    //     axiosWithAuth()
-    //         .delete(`/tasks/${task.id}`)
-    //         .then(res => {
-    //             setTasks(res.data)
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    // }
+    const deleteTask = (task) => {
+        axiosWithAuth()
+            .delete(`/tasks/${task.id}`)
+            .then(res => {
+                setTasks(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     return (
         <div>
@@ -90,7 +90,13 @@ const AdminDashboard = () => {
                     <p>Title: {task.title}</p>
                     <p>Description: {task.description}</p>
                     <button onClick={() => history.push(`/edit-task/${task.id}`)}>Edit Task</button>
-                    {/* <button onClick={deleteTask()}>Delete Task</button> */}
+                    
+                    <button onClick={e => {
+                        e.stopPropagation();
+                        deleteTask(task)
+                    }}>
+                        Delete Task
+                    </button>
                 </div>
             ))}
         </div>
@@ -98,3 +104,5 @@ const AdminDashboard = () => {
 }
 
 export default AdminDashboard;
+
+// onClick={deleteTask}

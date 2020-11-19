@@ -14,7 +14,7 @@ import DummyComponent from "./DummyComponent/DummyComponent";
 import Nav from "./components/Nav";
 import LoginContainer from "./components/LoginContainer";
 
-function App() {
+function App(props) {
   return (
     <Router>
       <div className="App">
